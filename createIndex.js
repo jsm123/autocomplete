@@ -29,7 +29,7 @@ var _config = {
             filter: {
                 'edge_ngram_2': {
                     type: 'edgeNGram',
-                    max_gram: 7
+                    max_gram: 50
                 }
             }
         }
@@ -58,6 +58,14 @@ var _config = {
     }).
     then(function () {
         console.log('index created');
+        return _client.indices.putMapping({
+            index: _config.index,
+            type: _config.type,
+            body: _config.mapping
+        });
+    }).
+    then(function () {
+        console.log('mapping added');
         return _client.create({
             index: _config.index,
             type: _config.type,
@@ -66,7 +74,7 @@ var _config = {
                 'name': 'Nevermind',
                 'suggest': {
                     'input': 'audi a4 baujahr 2010 benziner',
-                    'output': 'Nirvana - Nevermind - Blub',
+                    'output': 'audi a4 baujahr 2010 benziner',
                     'payload': {'artistId': 2321},
                     'weight': 34
                 }
