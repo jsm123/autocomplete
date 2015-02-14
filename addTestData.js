@@ -2,8 +2,6 @@ var _client = require('./clientFactory.js');
 var _config = require('./indexConfig.js');
 var sha1 = require('sha1');
 
-console.log('adding data');
-
 var createBulk = function(suggestions) {
     var s = [];
 
@@ -61,8 +59,10 @@ var suggestions = [
     'bla blu'
 ];
 
+
 createBulk(suggestions);
 updateExisting('bla blu');
+console.log('test data added');
 
 
 //_client.index({
