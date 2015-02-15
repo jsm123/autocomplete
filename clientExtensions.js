@@ -26,12 +26,12 @@ module.exports = function (config) {
             );
         });
 
-        _client.bulk({body: s});
+        return _client.bulk({body: s});
     };
 
     var updateExisting = function (suggestion) {
         var id = sha1(suggestion);
-        _client.get({
+        return _client.get({
             index: config.index,
             type: config.type,
             id: id
@@ -40,7 +40,7 @@ module.exports = function (config) {
             if (response.found) {
                 weight += response._source.suggest.weight;
             }
-            _client.index({
+            return _client.index({
                 index: config.index,
                 type: config.type,
                 id: id,
