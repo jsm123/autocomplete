@@ -29,7 +29,7 @@ module.exports = function (config) {
         return _client.bulk({body: s});
     };
 
-    var updateExisting = function (suggestion) {
+    var createOrUpdate = function (suggestion) {
         var id = sha1(suggestion);
         return _client.get({
             index: config.index,
@@ -66,7 +66,7 @@ module.exports = function (config) {
 
 
     return {
-        updateExisting: updateExisting,
+        createOrUpdate: createOrUpdate,
         createBulk: createBulk
     };
 };

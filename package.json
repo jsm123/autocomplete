@@ -1,6 +1,6 @@
 {
   "name": "suggester",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "suggester.js",
   "dependencies": {
     "elasticsearch": "~3.1.1",
